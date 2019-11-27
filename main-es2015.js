@@ -462,7 +462,7 @@ AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("#content {\n  padding: 1rem;\n}\n\n#footer {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2JjdXNlci9HaXQvZ2hvc3QtZ2FzLWFwcC1kZXYvZ2hvc3QtZ2FzLXRyYWNrZXIvc3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGFBQUE7QUNDSjs7QURFQTtFQUNJLGtCQUFBO0VBQ0EsU0FBQTtFQUNBLFdBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNjb250ZW50IHtcbiAgICBwYWRkaW5nOiAxcmVtO1xufVxuXG4jZm9vdGVyIHtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgYm90dG9tOiAwO1xuICAgIHdpZHRoOiAxMDAlO1xufSIsIiNjb250ZW50IHtcbiAgcGFkZGluZzogMXJlbTtcbn1cblxuI2Zvb3RlciB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgYm90dG9tOiAwO1xuICB3aWR0aDogMTAwJTtcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("#content {\n  padding: 1rem;\n}\n\n#footer {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2ZveC9HaXQvZ2hvc3QtZ2FzLWFwcC1kZXYvZ2hvc3QtZ2FzLXRyYWNrZXIvc3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGFBQUE7QUNDSjs7QURFQTtFQUNJLGtCQUFBO0VBQ0EsU0FBQTtFQUNBLFdBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNjb250ZW50IHtcbiAgICBwYWRkaW5nOiAxcmVtO1xufVxuXG4jZm9vdGVyIHtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgYm90dG9tOiAwO1xuICAgIHdpZHRoOiAxMDAlO1xufSIsIiNjb250ZW50IHtcbiAgcGFkZGluZzogMXJlbTtcbn1cblxuI2Zvb3RlciB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgYm90dG9tOiAwO1xuICB3aWR0aDogMTAwJTtcbn0iXX0= */");
 
 /***/ }),
 
@@ -493,6 +493,8 @@ let AppComponent = class AppComponent {
     }
     prevStep() {
         this.step--;
+    }
+    ngOnInit() {
     }
 };
 AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -550,6 +552,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! @angular/material/checkbox */ "./node_modules/@angular/material/esm2015/checkbox.js");
 /* harmony import */ var _components_organization_search_form_organization_search_form_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/organization-search-form/organization-search-form.component */ "./src/app/components/organization-search-form/organization-search-form.component.ts");
 /* harmony import */ var _components_user_search_form_user_search_form_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/user-search-form/user-search-form.component */ "./src/app/components/user-search-form/user-search-form.component.ts");
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm2015/ngx-toastr.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
 
 
 
@@ -567,7 +571,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// Components
+
+
 
 
 
@@ -622,9 +627,10 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_16__["MatGridListModule"],
             _angular_material_core__WEBPACK_IMPORTED_MODULE_29__["MatNativeDateModule"],
             _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_28__["MatDatepickerModule"],
-            _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_30__["MatCheckboxModule"]
+            _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_30__["MatCheckboxModule"],
+            ngx_toastr__WEBPACK_IMPORTED_MODULE_33__["ToastrModule"].forRoot()
         ],
-        providers: [],
+        providers: [{ provide: _angular_common__WEBPACK_IMPORTED_MODULE_34__["APP_BASE_HREF"], useValue: '/' }],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
     })
 ], AppModule);
@@ -1085,6 +1091,7 @@ let VehicleAddComponent = class VehicleAddComponent {
     constructor(vehicleService) {
         this.vehicleService = vehicleService;
         this.selectedVehicle = {};
+        this.lastSavedId = null; // store last added/updated for testing
     }
     ngOnInit() {
     }
@@ -1108,14 +1115,16 @@ let VehicleAddComponent = class VehicleAddComponent {
                 // Editing
                 saveVehicle._id = this.selectedVehicle._id;
                 this.vehicleService.update(saveVehicle).subscribe((result) => {
-                    console.log('Vehicle updated!');
+                    this.lastSavedId = result._id;
+                    console.log('Vehicle updated! Id: ' + this.lastSavedId);
                 });
             }
             else {
                 // New
                 // We must call subscribe() for new() to be executed
                 this.vehicleService.new(saveVehicle).subscribe((result) => {
-                    console.log('Vehicle created!');
+                    this.lastSavedId = result._id;
+                    console.log('Vehicle created! Id: ' + this.lastSavedId);
                 });
             }
             this.resetForm();
@@ -1230,7 +1239,7 @@ VehicleFuelUpComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".vehicle-mileage-log {\n  width: 100%;\n  margin-top: 1rem;\n}\n\n.mat-column-select {\n  overflow: initial;\n}\n\n#selection-actions {\n  margin-top: 20px;\n}\n\n#vehicle-metrics-totals {\n  margin-top: 25px;\n}\n\n#vehicle-metrics-totals > ul {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2JjdXNlci9HaXQvZ2hvc3QtZ2FzLWFwcC1kZXYvZ2hvc3QtZ2FzLXRyYWNrZXIvc3JjL2FwcC9jb21wb25lbnRzL3ZlaGljbGUtbWV0cmljcy92ZWhpY2xlLW1ldHJpY3MuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2NvbXBvbmVudHMvdmVoaWNsZS1tZXRyaWNzL3ZlaGljbGUtbWV0cmljcy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFdBQUE7RUFDQSxnQkFBQTtBQ0NKOztBREVBO0VBQ0UsaUJBQUE7QUNDRjs7QURFQTtFQUNFLGdCQUFBO0FDQ0Y7O0FERUE7RUFDRSxnQkFBQTtBQ0NGOztBREVBO0VBQ0UsZ0JBQUE7RUFDQSxTQUFBO0VBQ0EsVUFBQTtBQ0NGIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy92ZWhpY2xlLW1ldHJpY3MvdmVoaWNsZS1tZXRyaWNzLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnZlaGljbGUtbWlsZWFnZS1sb2cge1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIG1hcmdpbi10b3A6IDFyZW07XG59XG5cbi5tYXQtY29sdW1uLXNlbGVjdCB7XG4gIG92ZXJmbG93OiBpbml0aWFsO1xufVxuXG4jc2VsZWN0aW9uLWFjdGlvbnMge1xuICBtYXJnaW4tdG9wOiAyMHB4O1xufVxuXG4jdmVoaWNsZS1tZXRyaWNzLXRvdGFscyB7XG4gIG1hcmdpbi10b3A6IDI1cHg7XG59XG5cbiN2ZWhpY2xlLW1ldHJpY3MtdG90YWxzID4gdWwge1xuICBsaXN0LXN0eWxlOiBub25lO1xuICBtYXJnaW46IDA7XG4gIHBhZGRpbmc6IDA7XG59XG4iLCIudmVoaWNsZS1taWxlYWdlLWxvZyB7XG4gIHdpZHRoOiAxMDAlO1xuICBtYXJnaW4tdG9wOiAxcmVtO1xufVxuXG4ubWF0LWNvbHVtbi1zZWxlY3Qge1xuICBvdmVyZmxvdzogaW5pdGlhbDtcbn1cblxuI3NlbGVjdGlvbi1hY3Rpb25zIHtcbiAgbWFyZ2luLXRvcDogMjBweDtcbn1cblxuI3ZlaGljbGUtbWV0cmljcy10b3RhbHMge1xuICBtYXJnaW4tdG9wOiAyNXB4O1xufVxuXG4jdmVoaWNsZS1tZXRyaWNzLXRvdGFscyA+IHVsIHtcbiAgbGlzdC1zdHlsZTogbm9uZTtcbiAgbWFyZ2luOiAwO1xuICBwYWRkaW5nOiAwO1xufSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (".vehicle-mileage-log {\n  width: 100%;\n  margin-top: 1rem;\n}\n\n.mat-column-select {\n  overflow: initial;\n}\n\n#selection-actions {\n  margin-top: 20px;\n}\n\n#vehicle-metrics-totals {\n  margin-top: 25px;\n}\n\n#vehicle-metrics-totals > ul {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2ZveC9HaXQvZ2hvc3QtZ2FzLWFwcC1kZXYvZ2hvc3QtZ2FzLXRyYWNrZXIvc3JjL2FwcC9jb21wb25lbnRzL3ZlaGljbGUtbWV0cmljcy92ZWhpY2xlLW1ldHJpY3MuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2NvbXBvbmVudHMvdmVoaWNsZS1tZXRyaWNzL3ZlaGljbGUtbWV0cmljcy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFdBQUE7RUFDQSxnQkFBQTtBQ0NKOztBREVBO0VBQ0UsaUJBQUE7QUNDRjs7QURFQTtFQUNFLGdCQUFBO0FDQ0Y7O0FERUE7RUFDRSxnQkFBQTtBQ0NGOztBREVBO0VBQ0UsZ0JBQUE7RUFDQSxTQUFBO0VBQ0EsVUFBQTtBQ0NGIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy92ZWhpY2xlLW1ldHJpY3MvdmVoaWNsZS1tZXRyaWNzLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnZlaGljbGUtbWlsZWFnZS1sb2cge1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIG1hcmdpbi10b3A6IDFyZW07XG59XG5cbi5tYXQtY29sdW1uLXNlbGVjdCB7XG4gIG92ZXJmbG93OiBpbml0aWFsO1xufVxuXG4jc2VsZWN0aW9uLWFjdGlvbnMge1xuICBtYXJnaW4tdG9wOiAyMHB4O1xufVxuXG4jdmVoaWNsZS1tZXRyaWNzLXRvdGFscyB7XG4gIG1hcmdpbi10b3A6IDI1cHg7XG59XG5cbiN2ZWhpY2xlLW1ldHJpY3MtdG90YWxzID4gdWwge1xuICBsaXN0LXN0eWxlOiBub25lO1xuICBtYXJnaW46IDA7XG4gIHBhZGRpbmc6IDA7XG59XG4iLCIudmVoaWNsZS1taWxlYWdlLWxvZyB7XG4gIHdpZHRoOiAxMDAlO1xuICBtYXJnaW4tdG9wOiAxcmVtO1xufVxuXG4ubWF0LWNvbHVtbi1zZWxlY3Qge1xuICBvdmVyZmxvdzogaW5pdGlhbDtcbn1cblxuI3NlbGVjdGlvbi1hY3Rpb25zIHtcbiAgbWFyZ2luLXRvcDogMjBweDtcbn1cblxuI3ZlaGljbGUtbWV0cmljcy10b3RhbHMge1xuICBtYXJnaW4tdG9wOiAyNXB4O1xufVxuXG4jdmVoaWNsZS1tZXRyaWNzLXRvdGFscyA+IHVsIHtcbiAgbGlzdC1zdHlsZTogbm9uZTtcbiAgbWFyZ2luOiAwO1xuICBwYWRkaW5nOiAwO1xufSJdfQ== */");
 
 /***/ }),
 
@@ -1423,7 +1432,7 @@ VehicleSearchFormComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("#vehicle-info {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2JjdXNlci9HaXQvZ2hvc3QtZ2FzLWFwcC1kZXYvZ2hvc3QtZ2FzLXRyYWNrZXIvc3JjL2FwcC9jb21wb25lbnRzL3ZlaGljbGUtdmlldy92ZWhpY2xlLXZpZXcuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2NvbXBvbmVudHMvdmVoaWNsZS12aWV3L3ZlaGljbGUtdmlldy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGdCQUFBO0VBQ0EsU0FBQTtFQUNBLFVBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvdmVoaWNsZS12aWV3L3ZlaGljbGUtdmlldy5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiN2ZWhpY2xlLWluZm8ge1xuICAgIGxpc3Qtc3R5bGU6IG5vbmU7XG4gICAgbWFyZ2luOiAwO1xuICAgIHBhZGRpbmc6IDA7XG59XG4iLCIjdmVoaWNsZS1pbmZvIHtcbiAgbGlzdC1zdHlsZTogbm9uZTtcbiAgbWFyZ2luOiAwO1xuICBwYWRkaW5nOiAwO1xufSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("#vehicle-info {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2ZveC9HaXQvZ2hvc3QtZ2FzLWFwcC1kZXYvZ2hvc3QtZ2FzLXRyYWNrZXIvc3JjL2FwcC9jb21wb25lbnRzL3ZlaGljbGUtdmlldy92ZWhpY2xlLXZpZXcuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2NvbXBvbmVudHMvdmVoaWNsZS12aWV3L3ZlaGljbGUtdmlldy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGdCQUFBO0VBQ0EsU0FBQTtFQUNBLFVBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvdmVoaWNsZS12aWV3L3ZlaGljbGUtdmlldy5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiN2ZWhpY2xlLWluZm8ge1xuICAgIGxpc3Qtc3R5bGU6IG5vbmU7XG4gICAgbWFyZ2luOiAwO1xuICAgIHBhZGRpbmc6IDA7XG59XG4iLCIjdmVoaWNsZS1pbmZvIHtcbiAgbGlzdC1zdHlsZTogbm9uZTtcbiAgbWFyZ2luOiAwO1xuICBwYWRkaW5nOiAwO1xufSJdfQ== */");
 
 /***/ }),
 
@@ -1480,7 +1489,7 @@ VehicleViewComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("#footer {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2JjdXNlci9HaXQvZ2hvc3QtZ2FzLWFwcC1kZXYvZ2hvc3QtZ2FzLXRyYWNrZXIvc3JjL2FwcC9sYXlvdXQvZm9vdGVyL2Zvb3Rlci5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvbGF5b3V0L2Zvb3Rlci9mb290ZXIuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxrQkFBQTtFQUNBLFNBQUE7RUFDQSxXQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9sYXlvdXQvZm9vdGVyL2Zvb3Rlci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNmb290ZXIge1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICBib3R0b206IDA7XG4gICAgd2lkdGg6IDEwMCU7XG59IiwiI2Zvb3RlciB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgYm90dG9tOiAwO1xuICB3aWR0aDogMTAwJTtcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("#footer {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2ZveC9HaXQvZ2hvc3QtZ2FzLWFwcC1kZXYvZ2hvc3QtZ2FzLXRyYWNrZXIvc3JjL2FwcC9sYXlvdXQvZm9vdGVyL2Zvb3Rlci5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvbGF5b3V0L2Zvb3Rlci9mb290ZXIuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxrQkFBQTtFQUNBLFNBQUE7RUFDQSxXQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9sYXlvdXQvZm9vdGVyL2Zvb3Rlci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNmb290ZXIge1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICBib3R0b206IDA7XG4gICAgd2lkdGg6IDEwMCU7XG59IiwiI2Zvb3RlciB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgYm90dG9tOiAwO1xuICB3aWR0aDogMTAwJTtcbn0iXX0= */");
 
 /***/ }),
 
@@ -1994,7 +2003,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/bcuser/Git/ghost-gas-app-dev/ghost-gas-tracker/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /home/fox/Git/ghost-gas-app-dev/ghost-gas-tracker/src/main.ts */"./src/main.ts");
 
 
 /***/ })

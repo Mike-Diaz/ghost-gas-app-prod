@@ -32,7 +32,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<mat-grid-list cols=\"1\" rowHeight=\"fit\">\n  <mat-grid-tile-header><app-header></app-header></mat-grid-tile-header>\n  <mat-accordion class=\"user-dashboard\">\n    <mat-expansion-panel [expanded]=\"step === 0\" (opened)=\"setStep(0)\" hideToggle>\n      <mat-expansion-panel-header>\n        <mat-icon>local_gas_station-24px</mat-icon>\n        <mat-panel-title>Fuel Up</mat-panel-title>\n      </mat-expansion-panel-header>\n      <app-vehicle-fuel-up></app-vehicle-fuel-up>\n\n    </mat-expansion-panel>\n    <mat-expansion-panel [expanded]=\"step === 1\" (opened)=\"setStep(1)\" hideToggle>\n      <mat-expansion-panel-header>\n        <mat-icon>show_chart-24px</mat-icon>\n        <mat-panel-title>Metrics View</mat-panel-title>\n      </mat-expansion-panel-header>\n      <app-vehicle-view></app-vehicle-view>\n    </mat-expansion-panel>\n\n    <mat-expansion-panel [expanded]=\"step === 2\" (opened)=\"setStep(2)\" hideToggle>\n      <mat-expansion-panel-header>\n        <mat-icon>edit-24px</mat-icon>\n        <mat-panel-title>Vehicle Add/Edit</mat-panel-title>\n      </mat-expansion-panel-header>\n      <app-vehicle-add></app-vehicle-add>\n    </mat-expansion-panel>\n\n    <mat-expansion-panel [expanded]=\"step === 3\" (opened)=\"setStep(3)\" hideToggle>\n      <mat-expansion-panel-header>\n        <mat-icon>apartment-24px</mat-icon>\n        <mat-panel-title>Organization Add/Edit</mat-panel-title>\n      </mat-expansion-panel-header>\n      <app-organization-table></app-organization-table>\n    </mat-expansion-panel>\n\n    <mat-expansion-panel [expanded]=\"step === 4\" (opened)=\"setStep(4)\" hideToggle>\n      <mat-expansion-panel-header>\n        <mat-icon>face-24px</mat-icon>\n        <mat-panel-title>User Add/Edit</mat-panel-title>\n      </mat-expansion-panel-header>\n      <app-user-table></app-user-table>\n    </mat-expansion-panel>\n\n  </mat-accordion>\n</mat-grid-list>\n\n<!-- <app-footer class=\"footer\"></app-footer> TODO: figure out how to make footer stick to bottom of page -->\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-header (userEvent)=\"receiveUser\"></app-header>\n<mat-divider></mat-divider>\n<app-home (loggedInEvent)=\"receiveLoggedIn($event)\"></app-home>\n<mat-divider></mat-divider>\n<mat-grid-list cols=\"1\" rowHeight=\"fit\" *ngIf=\"loggedIn\">\n  <mat-accordion class=\"user-dashboard\">\n    <mat-expansion-panel [expanded]=\"step === 0\" (opened)=\"setStep(0)\" hideToggle>\n      <mat-expansion-panel-header>\n        <mat-icon>local_gas_station-24px</mat-icon>\n        <mat-panel-title>Fuel Up</mat-panel-title>\n      </mat-expansion-panel-header>\n      <app-vehicle-fuel-up></app-vehicle-fuel-up>\n\n    </mat-expansion-panel>\n    <mat-expansion-panel [expanded]=\"step === 1\" (opened)=\"setStep(1)\" hideToggle>\n      <mat-expansion-panel-header>\n        <mat-icon>show_chart-24px</mat-icon>\n        <mat-panel-title>Metrics View</mat-panel-title>\n      </mat-expansion-panel-header>\n      <app-vehicle-view></app-vehicle-view>\n    </mat-expansion-panel>\n\n    <mat-expansion-panel [expanded]=\"step === 2\" (opened)=\"setStep(2)\" hideToggle>\n      <mat-expansion-panel-header>\n        <mat-icon>edit-24px</mat-icon>\n        <mat-panel-title>Vehicle Add/Edit</mat-panel-title>\n      </mat-expansion-panel-header>\n      <app-vehicle-add></app-vehicle-add>\n    </mat-expansion-panel>\n\n    <mat-expansion-panel [expanded]=\"step === 3\" (opened)=\"setStep(3)\" hideToggle>\n      <mat-expansion-panel-header>\n        <mat-icon>apartment-24px</mat-icon>\n        <mat-panel-title>Organization Add/Edit</mat-panel-title>\n      </mat-expansion-panel-header>\n      <app-organization-table></app-organization-table>\n    </mat-expansion-panel>\n\n    <mat-expansion-panel [expanded]=\"step === 4\" (opened)=\"setStep(4)\" hideToggle>\n      <mat-expansion-panel-header>\n        <mat-icon>face-24px</mat-icon>\n        <mat-panel-title>User Add/Edit</mat-panel-title>\n      </mat-expansion-panel-header>\n      <app-user-table></app-user-table>\n    </mat-expansion-panel>\n\n  </mat-accordion>\n</mat-grid-list>\n\n<!-- <app-footer class=\"footer\"></app-footer> TODO: figure out how to make footer stick to bottom of page -->");
 
 /***/ }),
 
@@ -45,7 +45,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h2>Login with Google</h2>\n\n<a href=\"/auth/google\">Sign In</a>\n<a href=\"/logout\">Sign out</a>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<mat-card>\n    <mat-card-title *ngIf=\"!user\">Login with Google</mat-card-title>\n    <!-- <mat-divider></mat-divider>\n    <a href=\"/auth/google\">Sign In</a>\n    <mat-divider></mat-divider>\n    <a href=\"/logout\">Sign out</a> -->\n    <!-- <button mat-button (click)=\"sendLogin()\" class=\"button\">Log In</button> -->\n    <button *ngIf=\"!user\" mat-button (click)=\"singIn('Google');\">Sign in with Google</button>\n\n    <div *ngIf=\"user\"> \n        <img src=\"{{ user.photoUrl }}\">\n        <h4>{{ user.name }}</h4>\n        <p>{{ user.email }}</p>\n    </div>\n\n    <button mat-button (click)=\"signOut();\">Sign out</button>\n\n</mat-card>");
 
 /***/ }),
 
@@ -84,7 +84,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<form>\n    <mat-form-field>\n      <input type=\"search\" placeholder=\"Search for a User...\" matInput [formControl]=\"searchControl\"\n             [matAutocomplete]=\"autoSearch\">\n      <button mat-button *ngIf=\"searchControl.value.length\" matSuffix mat-icon-button aria-label=\"Clear\" (click)=\"clearSearch()\">\n        <mat-icon>close</mat-icon>\n      </button>\n      <mat-autocomplete #autoSearch=\"matAutocomplete\" (optionSelected)=\"selectUser($event)\"\n                        [displayWith]=\"searchDisplay\">\n        <mat-option *ngFor=\"let option of filteredSearchOptions | async\" [value]=\"option\">\n          {{option.userId}} - {{option.name}}\n        </mat-option>\n      </mat-autocomplete>\n    </mat-form-field>\n  </form>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<form>\n    <mat-form-field>\n      <input type=\"search\" placeholder=\"Search for a User...\" matInput [formControl]=\"searchControl\"\n             [matAutocomplete]=\"autoSearch\">\n      <button mat-button *ngIf=\"searchControl.value.length\" matSuffix mat-icon-button aria-label=\"Clear\" (click)=\"clearSearch()\">\n        <mat-icon>close</mat-icon>\n      </button>\n      <mat-autocomplete #autoSearch=\"matAutocomplete\" (optionSelected)=\"selectUser($event)\"\n                        [displayWith]=\"searchDisplay\">\n        <mat-option *ngFor=\"let option of filteredSearchOptions | async\" [value]=\"option\">\n          {{option._id}} - {{option.name}}\n        </mat-option>\n      </mat-autocomplete>\n    </mat-form-field>\n  </form>\n");
 
 /***/ }),
 
@@ -97,7 +97,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<p>Add new User using the form below or search for a User ID to edit:</p>\n<app-user-search-form #userSearchForm [(selectedUser)]=\"selectedUser\"></app-user-search-form>\n\n<div *ngIf=\"selectedUser._id\">\n    <p>Editing User ID: {{selectedUser._id}}&nbsp;&nbsp;<button mat-raised-button (click)=\"resetForm()\">Cancel</button>\n    </p>\n</div>\n\n<br>\n\n<form class=\"user-add-container\" #form=\"ngForm\" (ngSubmit)=\"onSubmit()\">\n\n    <mat-form-field>\n        <input type=\"number\" name=\"userId\" ngModel required matInput placeholder=\"User ID\"\n            [(ngModel)]=\"selectedUser.userId\">\n    </mat-form-field>\n\n    <mat-divider></mat-divider>\n\n    <app-organization-search-form #organizationSearchForm ngDefaultControl matInput required name=\"organizationId\"\n        [(ngModel)]=\"selectedUser.organizationId\">\n    </app-organization-search-form>\n    <p>Organization ID: {{selectedUser.organizationId}}</p>\n\n    <mat-divider></mat-divider>\n\n    <mat-form-field>\n        <input name=\"role\" ngModel required matInput placeholder=\"Role\" [(ngModel)]=\"selectedUser.role\">\n    </mat-form-field>\n\n    <mat-divider></mat-divider>\n\n    <mat-form-field>\n        <input name=\"userId\" ngModel required matInput placeholder=\"User ID\" [(ngModel)]=\"selectedUser.userId\">\n    </mat-form-field>\n\n    <mat-divider></mat-divider>\n\n    <mat-form-field>\n        <input name=\"name\" ngModel required matInput placeholder=\"Name\" [(ngModel)]=\"selectedUser.name\">\n    </mat-form-field>\n\n    <mat-divider></mat-divider>\n\n    <mat-form-field>\n        <input name=\"displayName\" ngModel required matInput placeholder=\"Display Name\"\n            [(ngModel)]=\"selectedUser.displayName\">\n    </mat-form-field>\n\n    <mat-divider></mat-divider>\n\n    <mat-form-field>\n        <input name=\"birthday\" ngModel required matInput placeholder=\"Birthday\" [(ngModel)]=\"selectedUser.birthday\">\n    </mat-form-field>\n\n    <mat-divider></mat-divider>\n\n    <mat-form-field>\n        <input name=\"relationship\" ngModel required matInput placeholder=\"Relationship\"\n            [(ngModel)]=\"selectedUser.relationship\">\n    </mat-form-field>\n\n    <mat-divider></mat-divider>\n\n    <mat-form-field>\n        <input name=\"language\" ngModel required matInput placeholder=\"Language\" [(ngModel)]=\"selectedUser.language\">\n    </mat-form-field>\n\n    <mat-divider></mat-divider>\n\n    <mat-form-field>\n        <input name=\"emails\" ngModel required matInput placeholder=\"Emails\" [(ngModel)]=\"selectedUser.emails\">\n    </mat-form-field>\n\n    <mat-divider></mat-divider>\n\n    <mat-form-field>\n        <input name=\"gender\" ngModel required matInput placeholder=\"Gender\" [(ngModel)]=\"selectedUser.gender\">\n    </mat-form-field>\n\n    <mat-divider></mat-divider>\n\n    <mat-form-field>\n        <input name=\"isPerson\" ngModel required matInput placeholder=\"isPerson\" [(ngModel)]=\"selectedUser.isPerson\">\n    </mat-form-field>\n\n    <mat-divider></mat-divider>\n\n    <mat-form-field>\n        <input name=\"isPlusUser\" ngModel required matInput placeholder=\"isPlusUser\"\n            [(ngModel)]=\"selectedUser.isPlusUser\">\n    </mat-form-field>\n\n    <mat-divider></mat-divider>\n\n    <mat-form-field>\n        <input name=\"picture\" ngModel required matInput placeholder=\"picture\" [(ngModel)]=\"selectedUser.picture\">\n    </mat-form-field>\n\n    <mat-divider></mat-divider>\n\n    <mat-form-field>\n        <input name=\"coverPhoto\" ngModel required matInput placeholder=\"coverPhoto\"\n            [(ngModel)]=\"selectedUser.coverPhoto\">\n    </mat-form-field>\n\n    <mat-divider></mat-divider>\n\n    <mat-form-field>\n        <input name=\"placesLived\" ngModel required matInput placeholder=\"placesLived\"\n            [(ngModel)]=\"selectedUser.placesLived\">\n    </mat-form-field>\n\n    <mat-divider></mat-divider>\n\n    <button mat-raised-button type=\"submit\">\n        <mat-icon aria-hidden=\"false\" aria-label=\"Add Organization Information\">save-24px</mat-icon>\n    </button>\n</form>");
+/* harmony default export */ __webpack_exports__["default"] = ("<p>Add new User using the form below or search for a User ID to edit:</p>\n<app-user-search-form #userSearchForm [(selectedUser)]=\"selectedUser\"></app-user-search-form>\n\n<div *ngIf=\"selectedUser._id\">\n    <p>Editing User ID: {{selectedUser._id}}&nbsp;&nbsp;<button mat-raised-button (click)=\"resetForm()\">Cancel</button>\n    </p>\n</div>\n\n<br>\n\n<form class=\"user-add-container\" #form=\"ngForm\" (ngSubmit)=\"onSubmit()\">\n\n    <mat-divider></mat-divider>\n\n    <app-organization-search-form #organizationSearchForm ngDefaultControl matInput required name=\"organizationId\"\n        [(ngModel)]=\"selectedUser.organizationId\">\n    </app-organization-search-form>\n    <p>Organization ID: {{selectedUser.organizationId}}</p>\n\n    <mat-divider></mat-divider>\n\n    <mat-form-field>\n        <input name=\"role\" ngModel required matInput placeholder=\"Role\" [(ngModel)]=\"selectedUser.role\">\n    </mat-form-field>\n\n    <mat-divider></mat-divider>\n\n    <mat-form-field>\n        <input name=\"name\" ngModel required matInput placeholder=\"Name\" [(ngModel)]=\"selectedUser.name\">\n    </mat-form-field>\n\n    <mat-divider></mat-divider>\n\n    <mat-form-field>\n        <input name=\"emails\" ngModel required matInput placeholder=\"Emails\" [(ngModel)]=\"selectedUser.emails\">\n    </mat-form-field>\n\n    <mat-divider></mat-divider>\n    <mat-form-field>\n        <input name=\"picture\" ngModel required matInput placeholder=\"picture\" [(ngModel)]=\"selectedUser.picture\">\n    </mat-form-field>\n\n    <mat-divider></mat-divider>\n\n    <button mat-raised-button type=\"submit\">\n        <mat-icon aria-hidden=\"false\" aria-label=\"Add Organization Information\">save-24px</mat-icon>\n    </button>\n</form>\n");
 
 /***/ }),
 
@@ -188,7 +188,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<mat-toolbar color=\"primary\" flex=\"1\"><img src=\"../../../assets/gasTracker.png\" alt=\"Logo\" style=\"width: 200px; height: 43px;\" ></mat-toolbar>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<mat-toolbar color=\"primary\" flex=\"1\">\n    <mat-toolbar-row>\n            <img src=\"../../../assets/gasTracker.png\" alt=\"Logo\" style=\"width: 200px; height: 43px;\" >\n            <mat-icon *ngIf=\"user\" class=\"example-icon\" aria-hidden=\"false\" aria-label=\"Example user verified icon\">verified_user-24px</mat-icon>\n    </mat-toolbar-row>\n</mat-toolbar>\n");
 
 /***/ }),
 
@@ -437,7 +437,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const routes = [];
+// const authUrl = 'localhost:3000/auth/google'
+const routes = [
+// {
+//   path: '/auth/google',
+//   url: authUrl
+// }
+];
 let AppRoutingModule = class AppRoutingModule {
 };
 AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -462,7 +468,7 @@ AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("#content {\n  padding: 1rem;\n}\n\n#footer {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2ZveC9HaXQvZ2hvc3QtZ2FzLWFwcC1kZXYvZ2hvc3QtZ2FzLXRyYWNrZXIvc3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGFBQUE7QUNDSjs7QURFQTtFQUNJLGtCQUFBO0VBQ0EsU0FBQTtFQUNBLFdBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNjb250ZW50IHtcbiAgICBwYWRkaW5nOiAxcmVtO1xufVxuXG4jZm9vdGVyIHtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgYm90dG9tOiAwO1xuICAgIHdpZHRoOiAxMDAlO1xufSIsIiNjb250ZW50IHtcbiAgcGFkZGluZzogMXJlbTtcbn1cblxuI2Zvb3RlciB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgYm90dG9tOiAwO1xuICB3aWR0aDogMTAwJTtcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("#content {\n  padding: 1rem;\n}\n\n#footer {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2JjdXNlci9HaXQvZ2hvc3QtZ2FzLWFwcC1kZXYvZ2hvc3QtZ2FzLXRyYWNrZXIvc3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGFBQUE7QUNDSjs7QURFQTtFQUNJLGtCQUFBO0VBQ0EsU0FBQTtFQUNBLFdBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNjb250ZW50IHtcbiAgICBwYWRkaW5nOiAxcmVtO1xufVxuXG4jZm9vdGVyIHtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgYm90dG9tOiAwO1xuICAgIHdpZHRoOiAxMDAlO1xufSIsIiNjb250ZW50IHtcbiAgcGFkZGluZzogMXJlbTtcbn1cblxuI2Zvb3RlciB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgYm90dG9tOiAwO1xuICB3aWR0aDogMTAwJTtcbn0iXX0= */");
 
 /***/ }),
 
@@ -483,7 +489,12 @@ __webpack_require__.r(__webpack_exports__);
 let AppComponent = class AppComponent {
     constructor() {
         this.title = 'ghost-gas-tracker';
+        this.show = false;
         this.step = 0;
+        this.loggedIn = false;
+    }
+    loginFunc() {
+        this.show = true;
     }
     setStep(index) {
         this.step = index;
@@ -495,6 +506,9 @@ let AppComponent = class AppComponent {
         this.step--;
     }
     ngOnInit() {
+    }
+    receiveLoggedIn($event) {
+        this.loggedIn = $event;
     }
 };
 AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -550,10 +564,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! @angular/material/datepicker */ "./node_modules/@angular/material/esm2015/datepicker.js");
 /* harmony import */ var _angular_material_core__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! @angular/material/core */ "./node_modules/@angular/material/esm2015/core.js");
 /* harmony import */ var _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! @angular/material/checkbox */ "./node_modules/@angular/material/esm2015/checkbox.js");
-/* harmony import */ var _components_organization_search_form_organization_search_form_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/organization-search-form/organization-search-form.component */ "./src/app/components/organization-search-form/organization-search-form.component.ts");
-/* harmony import */ var _components_user_search_form_user_search_form_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/user-search-form/user-search-form.component */ "./src/app/components/user-search-form/user-search-form.component.ts");
-/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm2015/ngx-toastr.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_material_card__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! @angular/material/card */ "./node_modules/@angular/material/esm2015/card.js");
+/* harmony import */ var _components_organization_search_form_organization_search_form_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/organization-search-form/organization-search-form.component */ "./src/app/components/organization-search-form/organization-search-form.component.ts");
+/* harmony import */ var _components_user_search_form_user_search_form_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/user-search-form/user-search-form.component */ "./src/app/components/user-search-form/user-search-form.component.ts");
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm2015/ngx-toastr.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var angular4_social_login__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! angular4-social-login */ "./node_modules/angular4-social-login/angular4-social-login.umd.js");
+/* harmony import */ var angular4_social_login__WEBPACK_IMPORTED_MODULE_36___default = /*#__PURE__*/__webpack_require__.n(angular4_social_login__WEBPACK_IMPORTED_MODULE_36__);
 
 
 
@@ -589,6 +606,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+const google_oauth_client_id = '930349649326-jpku7csmlrjf4j25raoglmha67s5ii2r.apps.googleusercontent.com';
+let config = new angular4_social_login__WEBPACK_IMPORTED_MODULE_36__["AuthServiceConfig"]([
+    {
+        id: angular4_social_login__WEBPACK_IMPORTED_MODULE_36__["GoogleLoginProvider"].PROVIDER_ID,
+        provider: new angular4_social_login__WEBPACK_IMPORTED_MODULE_36__["GoogleLoginProvider"](google_oauth_client_id)
+    }
+]);
 let AppModule = class AppModule {
 };
 AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -605,8 +631,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _components_home_home_component__WEBPACK_IMPORTED_MODULE_25__["HomeComponent"],
             _components_user_table_user_table_component__WEBPACK_IMPORTED_MODULE_26__["UserTableComponent"],
             _components_organization_table_organization_table_component__WEBPACK_IMPORTED_MODULE_27__["OrganizationTableComponent"],
-            _components_organization_search_form_organization_search_form_component__WEBPACK_IMPORTED_MODULE_31__["OrganizationSearchFormComponent"],
-            _components_user_search_form_user_search_form_component__WEBPACK_IMPORTED_MODULE_32__["UserSearchFormComponent"]
+            _components_organization_search_form_organization_search_form_component__WEBPACK_IMPORTED_MODULE_32__["OrganizationSearchFormComponent"],
+            _components_user_search_form_user_search_form_component__WEBPACK_IMPORTED_MODULE_33__["UserSearchFormComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -628,9 +654,11 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _angular_material_core__WEBPACK_IMPORTED_MODULE_29__["MatNativeDateModule"],
             _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_28__["MatDatepickerModule"],
             _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_30__["MatCheckboxModule"],
-            ngx_toastr__WEBPACK_IMPORTED_MODULE_33__["ToastrModule"].forRoot()
+            _angular_material_card__WEBPACK_IMPORTED_MODULE_31__["MatCardModule"],
+            ngx_toastr__WEBPACK_IMPORTED_MODULE_34__["ToastrModule"].forRoot(),
+            angular4_social_login__WEBPACK_IMPORTED_MODULE_36__["SocialLoginModule"].initialize(config)
         ],
-        providers: [{ provide: _angular_common__WEBPACK_IMPORTED_MODULE_34__["APP_BASE_HREF"], useValue: '/' }],
+        providers: [{ provide: _angular_common__WEBPACK_IMPORTED_MODULE_35__["APP_BASE_HREF"], useValue: '/' }],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
     })
 ], AppModule);
@@ -664,10 +692,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomeComponent", function() { return HomeComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var angular4_social_login__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! angular4-social-login */ "./node_modules/angular4-social-login/angular4-social-login.umd.js");
+/* harmony import */ var angular4_social_login__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(angular4_social_login__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 let HomeComponent = class HomeComponent {
-    constructor() { }
+    constructor(_socioAuthServ) {
+        this._socioAuthServ = _socioAuthServ;
+        this.title = 'Sign in';
+        this.loggedIn = false;
+        this.loggedInEvent = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.userEvent = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+    }
+    singIn(platform) {
+        platform = angular4_social_login__WEBPACK_IMPORTED_MODULE_2__["GoogleLoginProvider"].PROVIDER_ID;
+        this._socioAuthServ.signIn(platform).then((response) => {
+            console.log(platform + " logged in user data is= ", response);
+            this.user = response;
+            this.loggedIn = true;
+            this.loggedInEvent.emit(this.loggedIn);
+            this.userEvent.emit(this.user);
+        });
+    }
+    signOut() {
+        this._socioAuthServ.signOut();
+        this.user = null;
+        this.loggedIn = false;
+        this.loggedInEvent.emit(this.loggedIn);
+        this.userEvent.emit(this.user);
+        console.log('User signed out.');
+    }
     ngOnInit() {
         function onSignIn(googleUser) {
             var profile = googleUser.getBasicProfile();
@@ -678,6 +733,15 @@ let HomeComponent = class HomeComponent {
         }
     }
 };
+HomeComponent.ctorParameters = () => [
+    { type: angular4_social_login__WEBPACK_IMPORTED_MODULE_2__["AuthService"] }
+];
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
+], HomeComponent.prototype, "loggedInEvent", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
+], HomeComponent.prototype, "userEvent", void 0);
 HomeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-home',
@@ -913,10 +977,10 @@ let UserSearchFormComponent = class UserSearchFormComponent {
     }
     _filterSearch(searchInput) {
         const filterValue = searchInput.length ? searchInput : '';
-        return this.searchOptions.filter(option => option.userId ? option.userId.toString().includes(filterValue) : '');
+        return this.searchOptions.filter(option => option._id ? option._id.toString().includes(filterValue) : '');
     }
     searchDisplay(option) {
-        return option.userId;
+        return option._id;
     }
     selectUser(event) {
         this.selectedUser = event.option.value;
@@ -1000,21 +1064,11 @@ let UserTableComponent = class UserTableComponent {
     onSubmit() {
         if (this.form.valid) {
             const saveUser = {
-                userId: this.form.value.userId,
                 organizationId: this.form.value.organizationId,
                 role: this.form.value.role,
                 name: this.form.value.name,
-                displayName: this.form.value.displayName,
-                birthday: this.form.value.birthday,
-                relationship: this.form.value.relationship,
-                language: this.form.value.language,
                 emails: this.form.value.emails,
-                gender: this.form.value.gender,
-                isPerson: this.form.value.isPerson,
-                isPlusUser: this.form.value.isPlusUser,
                 picture: this.form.value.picture,
-                coverPhoto: this.form.value.coverPhoto,
-                placesLived: this.form.value.placesLived,
             };
             if (this.selectedUser._id) {
                 // Editing
@@ -1239,7 +1293,7 @@ VehicleFuelUpComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".vehicle-mileage-log {\n  width: 100%;\n  margin-top: 1rem;\n}\n\n.mat-column-select {\n  overflow: initial;\n}\n\n#selection-actions {\n  margin-top: 20px;\n}\n\n#vehicle-metrics-totals {\n  margin-top: 25px;\n}\n\n#vehicle-metrics-totals > ul {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2ZveC9HaXQvZ2hvc3QtZ2FzLWFwcC1kZXYvZ2hvc3QtZ2FzLXRyYWNrZXIvc3JjL2FwcC9jb21wb25lbnRzL3ZlaGljbGUtbWV0cmljcy92ZWhpY2xlLW1ldHJpY3MuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2NvbXBvbmVudHMvdmVoaWNsZS1tZXRyaWNzL3ZlaGljbGUtbWV0cmljcy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFdBQUE7RUFDQSxnQkFBQTtBQ0NKOztBREVBO0VBQ0UsaUJBQUE7QUNDRjs7QURFQTtFQUNFLGdCQUFBO0FDQ0Y7O0FERUE7RUFDRSxnQkFBQTtBQ0NGOztBREVBO0VBQ0UsZ0JBQUE7RUFDQSxTQUFBO0VBQ0EsVUFBQTtBQ0NGIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy92ZWhpY2xlLW1ldHJpY3MvdmVoaWNsZS1tZXRyaWNzLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnZlaGljbGUtbWlsZWFnZS1sb2cge1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIG1hcmdpbi10b3A6IDFyZW07XG59XG5cbi5tYXQtY29sdW1uLXNlbGVjdCB7XG4gIG92ZXJmbG93OiBpbml0aWFsO1xufVxuXG4jc2VsZWN0aW9uLWFjdGlvbnMge1xuICBtYXJnaW4tdG9wOiAyMHB4O1xufVxuXG4jdmVoaWNsZS1tZXRyaWNzLXRvdGFscyB7XG4gIG1hcmdpbi10b3A6IDI1cHg7XG59XG5cbiN2ZWhpY2xlLW1ldHJpY3MtdG90YWxzID4gdWwge1xuICBsaXN0LXN0eWxlOiBub25lO1xuICBtYXJnaW46IDA7XG4gIHBhZGRpbmc6IDA7XG59XG4iLCIudmVoaWNsZS1taWxlYWdlLWxvZyB7XG4gIHdpZHRoOiAxMDAlO1xuICBtYXJnaW4tdG9wOiAxcmVtO1xufVxuXG4ubWF0LWNvbHVtbi1zZWxlY3Qge1xuICBvdmVyZmxvdzogaW5pdGlhbDtcbn1cblxuI3NlbGVjdGlvbi1hY3Rpb25zIHtcbiAgbWFyZ2luLXRvcDogMjBweDtcbn1cblxuI3ZlaGljbGUtbWV0cmljcy10b3RhbHMge1xuICBtYXJnaW4tdG9wOiAyNXB4O1xufVxuXG4jdmVoaWNsZS1tZXRyaWNzLXRvdGFscyA+IHVsIHtcbiAgbGlzdC1zdHlsZTogbm9uZTtcbiAgbWFyZ2luOiAwO1xuICBwYWRkaW5nOiAwO1xufSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (".vehicle-mileage-log {\n  width: 100%;\n  margin-top: 1rem;\n}\n\n.mat-column-select {\n  overflow: initial;\n}\n\n#selection-actions {\n  margin-top: 20px;\n}\n\n#vehicle-metrics-totals {\n  margin-top: 25px;\n}\n\n#vehicle-metrics-totals > ul {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2JjdXNlci9HaXQvZ2hvc3QtZ2FzLWFwcC1kZXYvZ2hvc3QtZ2FzLXRyYWNrZXIvc3JjL2FwcC9jb21wb25lbnRzL3ZlaGljbGUtbWV0cmljcy92ZWhpY2xlLW1ldHJpY3MuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2NvbXBvbmVudHMvdmVoaWNsZS1tZXRyaWNzL3ZlaGljbGUtbWV0cmljcy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFdBQUE7RUFDQSxnQkFBQTtBQ0NKOztBREVBO0VBQ0UsaUJBQUE7QUNDRjs7QURFQTtFQUNFLGdCQUFBO0FDQ0Y7O0FERUE7RUFDRSxnQkFBQTtBQ0NGOztBREVBO0VBQ0UsZ0JBQUE7RUFDQSxTQUFBO0VBQ0EsVUFBQTtBQ0NGIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy92ZWhpY2xlLW1ldHJpY3MvdmVoaWNsZS1tZXRyaWNzLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnZlaGljbGUtbWlsZWFnZS1sb2cge1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIG1hcmdpbi10b3A6IDFyZW07XG59XG5cbi5tYXQtY29sdW1uLXNlbGVjdCB7XG4gIG92ZXJmbG93OiBpbml0aWFsO1xufVxuXG4jc2VsZWN0aW9uLWFjdGlvbnMge1xuICBtYXJnaW4tdG9wOiAyMHB4O1xufVxuXG4jdmVoaWNsZS1tZXRyaWNzLXRvdGFscyB7XG4gIG1hcmdpbi10b3A6IDI1cHg7XG59XG5cbiN2ZWhpY2xlLW1ldHJpY3MtdG90YWxzID4gdWwge1xuICBsaXN0LXN0eWxlOiBub25lO1xuICBtYXJnaW46IDA7XG4gIHBhZGRpbmc6IDA7XG59XG4iLCIudmVoaWNsZS1taWxlYWdlLWxvZyB7XG4gIHdpZHRoOiAxMDAlO1xuICBtYXJnaW4tdG9wOiAxcmVtO1xufVxuXG4ubWF0LWNvbHVtbi1zZWxlY3Qge1xuICBvdmVyZmxvdzogaW5pdGlhbDtcbn1cblxuI3NlbGVjdGlvbi1hY3Rpb25zIHtcbiAgbWFyZ2luLXRvcDogMjBweDtcbn1cblxuI3ZlaGljbGUtbWV0cmljcy10b3RhbHMge1xuICBtYXJnaW4tdG9wOiAyNXB4O1xufVxuXG4jdmVoaWNsZS1tZXRyaWNzLXRvdGFscyA+IHVsIHtcbiAgbGlzdC1zdHlsZTogbm9uZTtcbiAgbWFyZ2luOiAwO1xuICBwYWRkaW5nOiAwO1xufSJdfQ== */");
 
 /***/ }),
 
@@ -1432,7 +1486,7 @@ VehicleSearchFormComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("#vehicle-info {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2ZveC9HaXQvZ2hvc3QtZ2FzLWFwcC1kZXYvZ2hvc3QtZ2FzLXRyYWNrZXIvc3JjL2FwcC9jb21wb25lbnRzL3ZlaGljbGUtdmlldy92ZWhpY2xlLXZpZXcuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2NvbXBvbmVudHMvdmVoaWNsZS12aWV3L3ZlaGljbGUtdmlldy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGdCQUFBO0VBQ0EsU0FBQTtFQUNBLFVBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvdmVoaWNsZS12aWV3L3ZlaGljbGUtdmlldy5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiN2ZWhpY2xlLWluZm8ge1xuICAgIGxpc3Qtc3R5bGU6IG5vbmU7XG4gICAgbWFyZ2luOiAwO1xuICAgIHBhZGRpbmc6IDA7XG59XG4iLCIjdmVoaWNsZS1pbmZvIHtcbiAgbGlzdC1zdHlsZTogbm9uZTtcbiAgbWFyZ2luOiAwO1xuICBwYWRkaW5nOiAwO1xufSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("#vehicle-info {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2JjdXNlci9HaXQvZ2hvc3QtZ2FzLWFwcC1kZXYvZ2hvc3QtZ2FzLXRyYWNrZXIvc3JjL2FwcC9jb21wb25lbnRzL3ZlaGljbGUtdmlldy92ZWhpY2xlLXZpZXcuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2NvbXBvbmVudHMvdmVoaWNsZS12aWV3L3ZlaGljbGUtdmlldy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGdCQUFBO0VBQ0EsU0FBQTtFQUNBLFVBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvdmVoaWNsZS12aWV3L3ZlaGljbGUtdmlldy5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiN2ZWhpY2xlLWluZm8ge1xuICAgIGxpc3Qtc3R5bGU6IG5vbmU7XG4gICAgbWFyZ2luOiAwO1xuICAgIHBhZGRpbmc6IDA7XG59XG4iLCIjdmVoaWNsZS1pbmZvIHtcbiAgbGlzdC1zdHlsZTogbm9uZTtcbiAgbWFyZ2luOiAwO1xuICBwYWRkaW5nOiAwO1xufSJdfQ== */");
 
 /***/ }),
 
@@ -1489,7 +1543,7 @@ VehicleViewComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("#footer {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2ZveC9HaXQvZ2hvc3QtZ2FzLWFwcC1kZXYvZ2hvc3QtZ2FzLXRyYWNrZXIvc3JjL2FwcC9sYXlvdXQvZm9vdGVyL2Zvb3Rlci5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvbGF5b3V0L2Zvb3Rlci9mb290ZXIuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxrQkFBQTtFQUNBLFNBQUE7RUFDQSxXQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9sYXlvdXQvZm9vdGVyL2Zvb3Rlci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNmb290ZXIge1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICBib3R0b206IDA7XG4gICAgd2lkdGg6IDEwMCU7XG59IiwiI2Zvb3RlciB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgYm90dG9tOiAwO1xuICB3aWR0aDogMTAwJTtcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("#footer {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2JjdXNlci9HaXQvZ2hvc3QtZ2FzLWFwcC1kZXYvZ2hvc3QtZ2FzLXRyYWNrZXIvc3JjL2FwcC9sYXlvdXQvZm9vdGVyL2Zvb3Rlci5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvbGF5b3V0L2Zvb3Rlci9mb290ZXIuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxrQkFBQTtFQUNBLFNBQUE7RUFDQSxXQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9sYXlvdXQvZm9vdGVyL2Zvb3Rlci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNmb290ZXIge1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICBib3R0b206IDA7XG4gICAgd2lkdGg6IDEwMCU7XG59IiwiI2Zvb3RlciB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgYm90dG9tOiAwO1xuICB3aWR0aDogMTAwJTtcbn0iXX0= */");
 
 /***/ }),
 
@@ -1533,7 +1587,7 @@ FooterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2xheW91dC9oZWFkZXIvaGVhZGVyLmNvbXBvbmVudC5zY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = (".example-icon {\n  padding: 0 14px;\n}\n\n.example-spacer {\n  flex: 1 1 auto;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2JjdXNlci9HaXQvZ2hvc3QtZ2FzLWFwcC1kZXYvZ2hvc3QtZ2FzLXRyYWNrZXIvc3JjL2FwcC9sYXlvdXQvaGVhZGVyL2hlYWRlci5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvbGF5b3V0L2hlYWRlci9oZWFkZXIuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxlQUFBO0FDQ0o7O0FERUU7RUFDRSxjQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9sYXlvdXQvaGVhZGVyL2hlYWRlci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5leGFtcGxlLWljb24ge1xuICAgIHBhZGRpbmc6IDAgMTRweDtcbiAgfVxuICBcbiAgLmV4YW1wbGUtc3BhY2VyIHtcbiAgICBmbGV4OiAxIDEgYXV0bztcbiAgfSIsIi5leGFtcGxlLWljb24ge1xuICBwYWRkaW5nOiAwIDE0cHg7XG59XG5cbi5leGFtcGxlLXNwYWNlciB7XG4gIGZsZXg6IDEgMSBhdXRvO1xufSJdfQ== */");
 
 /***/ }),
 
@@ -1554,6 +1608,9 @@ __webpack_require__.r(__webpack_exports__);
 let HeaderComponent = class HeaderComponent {
     constructor() { }
     ngOnInit() {
+    }
+    receiveUser($event) {
+        this.user = $event;
     }
 };
 HeaderComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -1951,7 +2008,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const environment = {
     production: false,
-    apiUrl: 'https://ghost-mongo-server.azurewebsites.net' // Changed from localhost:3000 for testing
+    apiUrl: 'http://localhost:3000'
 };
 /*
  * For easier debugging in development mode, you can import the following file
@@ -2003,7 +2060,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/fox/Git/ghost-gas-app-dev/ghost-gas-tracker/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /home/bcuser/Git/ghost-gas-app-dev/ghost-gas-tracker/src/main.ts */"./src/main.ts");
 
 
 /***/ })

@@ -1862,7 +1862,7 @@
             // The list of file replacements can be found in `angular.json`.
             var environment = {
                 production: false,
-                apiUrl: 'http://localhost:3000'
+                apiUrl: 'http://ghost-mongo-server.azurewebsites.net' // http://localhost:3000 CHANGE THIS FOR DEV
             };
             /*
              * For easier debugging in development mode, you can import the following file

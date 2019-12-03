@@ -2008,7 +2008,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const environment = {
     production: false,
-    apiUrl: 'http://localhost:3000'
+    apiUrl: 'http://ghost-mongo-server.azurewebsites.net' // http://localhost:3000 CHANGE THIS FOR DEV
 };
 /*
  * For easier debugging in development mode, you can import the following file
